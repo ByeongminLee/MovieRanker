@@ -8,8 +8,8 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getRank } from 'slices/MovieRankSlice';
-import { getSearch } from 'slices/MovieSearchSlice';
 import { useParams } from 'react-router-dom';
+import dayjs from 'dayjs';
 
 const Wrapper = styled.div`
     width: 100%;
@@ -19,11 +19,35 @@ const Container = styled.div`
     margin: 0 auto;
     width: 1200px;
     min-width: 1200px;
-    border: 1px solid red;
 `;
 
 const Calendar = styled.input`
     width: 150px;
+    float: right;
+    margin-bottom: 20px;
+    &:after {
+        clear: both;
+    }
+`;
+const SelectDate = styled.div`
+    width: 100%
+    float: left;
+    font-size: 15px;
+    padding: 5px;
+
+    h1{
+        font-size: 30px;
+        padding: 5px 0;
+    }
+    hr{
+        width: 300px;
+        float: left;
+        margin-bottom: 30px;
+    }
+
+    &:after{
+        clear: both;
+    }
 `;
 
 const Main = () => {
@@ -32,11 +56,20 @@ const Main = () => {
 
     const [boxOffice, setBoxOffice] = useState();
     const [query, setQuery] = useState([]);
+    const [date, setDate] = useState([]);
 
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getRank(targetDate));
+        if (targetDate) {
+            setDate(
+                `${targetDate.substring(0, 4)}년 ${targetDate.substring(
+                    5,
+                    7
+                )}월 ${targetDate.substring(8, 10)}일`
+            );
+        }
     }, [dispatch, targetDate]);
 
     useEffect(() => {
@@ -67,6 +100,20 @@ const Main = () => {
             <Slide query={query} targetDate={targetDate} />
 
             <Container>
+                {targetDate ? (
+                    <SelectDate>
+                        <p>{date}</p>
+                        <h1>박스 오피스 순위</h1>
+                        <hr />
+                    </SelectDate>
+                ) : (
+                    <SelectDate>
+                        <p>{dayjs().add(-1, 'd').format('YYYY년 MM월 DD일')}</p>
+                        <h1>박스 오피스 순위</h1>
+                        <hr />
+                    </SelectDate>
+                )}
+
                 <Calendar
                     type="date"
                     className="form-control"
