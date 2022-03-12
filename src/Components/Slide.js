@@ -10,7 +10,7 @@ import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 const Wrapper = styled.div`
     width: 100%;
     background: linear-gradient(to right, #111, #d3d3d3 50%, #111 100%);
-    margin-bottom: 150px;
+    margin-bottom: 50px;
     min-width: 1200px;
 `;
 
@@ -107,7 +107,11 @@ const Slide = ({ query, targetDate }) => {
         <Wrapper>
             <Container>
                 <LeftButton>
-                    <FontAwesomeIcon icon={faAngleLeft} onClick={onClickLeft} />
+                    {number !== 0 ? (
+                        <FontAwesomeIcon icon={faAngleLeft} onClick={onClickLeft} />
+                    ) : (
+                        <></>
+                    )}
                 </LeftButton>
                 {searchData.length > number ? (
                     <>
