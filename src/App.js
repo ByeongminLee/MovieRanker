@@ -9,8 +9,8 @@ const App = () => {
             <GlobalStyles />
             <Meta />
             <Routes>
-                <Route path="/" element={<Main />} />
-                <Route path="/:targetDate" element={<Main />} exact />
+                <Route path="/MovieRanker" element={<Main />} />
+                <Route path="/MovieRanker/:targetDate" element={<Main />} exact />
             </Routes>
         </>
     );

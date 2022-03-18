@@ -92,7 +92,7 @@ const Main = () => {
     /** 날짜의 선택 값이 변경된 경우 호출될 이벤트 핸들러 */
     const onDateChange = (e) => {
         e.preventDefault();
-        navigate('/' + e.currentTarget.value);
+        navigate('/MovieRanker/' + e.currentTarget.value);
     };
 
     return (
