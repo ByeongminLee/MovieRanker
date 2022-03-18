@@ -19,8 +19,6 @@ export const getSearch = createAsyncThunk('/movie/search', async (payload, { rej
     } catch (err) {
         console.error('에러', err);
     }
-
-    console.log('=-==-==-=-=', result);
     return result;
 });
 

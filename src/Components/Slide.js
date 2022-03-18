@@ -70,14 +70,12 @@ const Slide = ({ query, targetDate }) => {
     }, []);
 
     useEffect(() => {
-        console.log('1,..', query);
         if (query.length > 9 && searchData.length < 10) {
             dispatch(getSearch(query[number]));
         }
     }, [query, number]);
 
     useEffect(() => {
-        console.log('333333', query);
         setSearchData([]);
         setNumber(0);
     }, [targetDate]);

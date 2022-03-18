@@ -33,8 +33,6 @@ export const getRank = createAsyncThunk('/movie/rank', async (payload, { rejectW
             err.response = { status: 500, statusText: result.data.faultInfo.message };
             throw err;
         }
-
-        console.log('test1', result);
     } catch (err) {
         result = rejectWithValue(err.response);
     }
