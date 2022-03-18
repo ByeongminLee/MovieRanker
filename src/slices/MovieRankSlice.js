@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import dayjs from 'dayjs';
+import { movieRankKey } from 'key.js';
 
 export const getRank = createAsyncThunk('/movie/rank', async (payload, { rejectWithValue }) => {
     if (payload === undefined) {
@@ -25,7 +26,7 @@ export const getRank = createAsyncThunk('/movie/rank', async (payload, { rejectW
             'http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json';
 
         result = await axios.get(apiUrl, {
-            params: { key: process.env.REACT_APP_MOVIE_RANK_URL, targetDt: targetDt },
+            params: { key: movieRankKey, targetDt: targetDt },
         });
 
         if (result.data.faultInfo !== undefined) {

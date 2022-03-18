@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { naverKeyID, naverKeySecret } from 'key.js';
 
 export const getSearch = createAsyncThunk('/movie/search', async (payload, { rejectWithValue }) => {
     let result = null;
@@ -12,8 +13,8 @@ export const getSearch = createAsyncThunk('/movie/search', async (payload, { rej
     try {
         result = await axios.get(url, {
             headers: {
-                'X-Naver-Client-Id': process.env.REACT_APP_NAVER_CLIENT_ID,
-                'X-Naver-Client-Secret': process.env.REACT_APP_NAVER_CLIENT_SECRET,
+                'X-Naver-Client-Id': naverKeyID,
+                'X-Naver-Client-Secret': naverKeySecret,
             },
         });
     } catch (err) {
