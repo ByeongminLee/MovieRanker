@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/movieranker/static/js/main.80e67029.js",
+    "index.html": "/movieranker/index.html",
+    "main.80e67029.js.map": "/movieranker/static/js/main.80e67029.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.80e67029.js"
+  ]
+}
